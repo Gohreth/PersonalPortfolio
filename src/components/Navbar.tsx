@@ -1,11 +1,31 @@
-const Navbar = () => {
+const SECTIONS = [
+  { id: "HomePage", htmlText: "Home" },
+  { id: "ProjectsPage", htmlText: "Projects" },
+  { id: "ExperiencePage", htmlText: "3D" },
+];
+
+const Navbar = ({ currentSection }: { currentSection: string }) => {
   return (
     <header className="fixed top-0 inset-x-0 flex justify-between items-center p-4 bg-gray-400 rounded-lg m-4">
       <div className="font-black text-4xl">SC</div>
-      <ul className="flex gap-4 text-base">
-        <li>Home</li>
-        <li>Projects</li>
-        <li>3D</li>
+      <ul className="flex gap-4 text-base items-center">
+        {SECTIONS.map((section) => {
+          return (
+            <li
+              key={section.id}
+              className={currentSection === section.id ? "animate-pulse" : ""}
+            >
+              {section.htmlText}
+            </li>
+          );
+        })}
+        {/*TODO change img for svg to fill color based on theme selected */}
+        <li>
+          <img src="/github.svg" alt="" className="h-5 w-5" />
+        </li>
+        <li>
+          <img src="/linkedin.svg" alt="" className="h-5 w-5" />
+        </li>
       </ul>
     </header>
   );

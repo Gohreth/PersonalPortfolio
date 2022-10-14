@@ -5,8 +5,10 @@ const Experience = forwardRef<HTMLDivElement>((props, ref) => {
     <div
       id={"ExperiencePage"}
       ref={ref}
-      className="h-screen w-screen bg-blue-300 overflow-hidden"
-    ></div>
+      className="snap-center h-screen w-screen bg-black flex justify-center items-center"
+    >
+      <button>Start Experience</button>
+    </div>
   );
 });
 

@@ -32,13 +32,14 @@ function App() {
     };
   }, []);
   return (
-    <>
-      <Navbar />
-      <Home ref={homeRef} />
-      <Projects ref={projectsRef} />
-      <Experience ref={experienceRef} />
-      <DebugText text={observed!} />
-    </>
+    <div className=" text-slate-200">
+      <Navbar currentSection={observed!} />
+      <div className="snap-y snap-mandatory h-screen overflow-y-scroll overflow-x-hidden">
+        <Home ref={homeRef} />
+        <Projects ref={projectsRef} />
+        <Experience ref={experienceRef} />
+      </div>
+    </div>
   );
 }
 

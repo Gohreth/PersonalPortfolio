@@ -2,19 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: monospace, system-ui, sans-serif;
+  }
+}
+
 *,
 *::after,
 *::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  background-color: #13141f;
 }
 
 :root {

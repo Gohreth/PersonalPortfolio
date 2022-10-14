@@ -5,8 +5,11 @@ const Projects = forwardRef<HTMLDivElement>((props, ref) => {
     <div
       id={"ProjectsPage"}
       ref={ref}
-      className="h-screen w-screen bg-cyan-300 overflow-hidden"
-    ></div>
+      className="snap-center h-screen w-screen bg-black flex justify-center items-center"
+    >
+      <div className="">Projects</div>
+      <div className="">Tech used</div>
+    </div>
   );
 });
 
