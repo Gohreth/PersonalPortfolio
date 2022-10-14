@@ -3,6 +3,19 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        chile: "url(../public/images/Chile.jpg)",
+      },
+      textColor: {
+        textLightMode: "#13141f",
+        textAccent: "#d6fe7a",
+        textDarkMode: "#ffffff",
+      },
+      colors: {
+        primary: "#13141f",
+        secondary: "#3e4044",
+        accent: "#d6fe7a",
+      },
       fontFamily: {
         sirin: ["Sirin Stencil", "cursive"],
       },
@@ -24,6 +37,11 @@ module.exports = {
         typing: {
           "0%, 100%": { width: "0%" },
           "50%": { width: "100%" },
+        },
+        vanish: {
+          "0%": { opacity: "100%" },
+          "60%": { opacity: "0%" },
+          "100%": { opacity: "0%" },
         },
       },
       animation: {

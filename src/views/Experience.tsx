@@ -7,7 +7,9 @@ const Experience = forwardRef<HTMLDivElement>((props, ref) => {
       ref={ref}
       className="snap-center h-screen w-screen bg-black flex justify-center items-center"
     >
-      <button>Start Experience</button>
+      <button className="border-4 rounded-xl p-5 hover:animate-pulse hover:text-textAccent hover:border-accent transition-colors">
+        Start Experience
+      </button>
     </div>
   );
 });
