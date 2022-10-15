@@ -17,7 +17,7 @@ module.exports = {
         accent: "#d6fe7a",
       },
       fontFamily: {
-        sirin: ["Sirin Stencil", "cursive"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       keyframes: {
         wave: {

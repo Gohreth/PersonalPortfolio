@@ -5,10 +5,16 @@ const Projects = forwardRef<HTMLDivElement>((props, ref) => {
     <div
       id={"ProjectsPage"}
       ref={ref}
-      className="snap-center h-screen w-screen bg-black flex justify-center items-center"
+      className="snap-center h-screen w-screen flex flex-col justify-center items-center gap-y-10"
     >
-      <div className="">Projects</div>
-      <div className="">Tech used</div>
+      <div className="flex flex-col">
+        <p className="text-4xl">Projects</p>
+        <div className="border p-10"></div>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-4xl">Tech used</p>
+        <div className="border p-10"></div>
+      </div>
     </div>
   );
 });

@@ -8,17 +8,14 @@
   }
 }
 
+html {
+  @apply font-montserrat;
+}
+
 *,
 *::after,
 *::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-:root {
-  --primary-clr: #13141f;
-  --secondary-clr: #3e4044;
-  --accent-clr: #d6fe7a;
-  --text-clr: #ffffff;
 }
