@@ -11,24 +11,32 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
       <ul className="flex gap-10 text-base items-center">
         {SECTIONS.map((section) => {
           return (
-            <li
-              key={section.id}
-              className={
-                currentSection === section.id ? "animate-pulse text-accent" : ""
-              }
-            >
-              {section.htmlText}
-            </li>
+            <a href={`#${section.id}`} key={section.id}>
+              <li
+                className={
+                  currentSection === section.id
+                    ? "animate-pulse text-accent"
+                    : ""
+                }
+              >
+                {section.htmlText}
+              </li>
+            </a>
           );
         })}
         <hr />
         <hr />
         {/*TODO change img for svg to fill color based on theme selected */}
         <li>
-          <img src="/github.svg" alt="" className="h-5 w-5" />
+          <a href="https://github.com/Gohreth" target="__blank">
+            <img src="/github.svg" alt="" className="h-5 w-5" />
+          </a>
         </li>
+
         <li>
-          <img src="/linkedin.svg" alt="" className="h-5 w-5" />
+          <a href="https://linkedin.com/in/sacf94" target="__blank">
+            <img src="/linkedin.svg" alt="" className="h-5 w-5" />
+          </a>
         </li>
       </ul>
     </header>

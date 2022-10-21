@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useRef, useEffect, useLayoutEffect } from "react";
 
 const Projects = forwardRef<HTMLDivElement>((props, ref) => {
   return (
@@ -12,7 +12,9 @@ const Projects = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="border p-10"></div>
       </div>
       <div className="flex flex-col">
-        <p className="text-4xl">Tech used</p>
+        <p id="abcd2" className="text-4xl">
+          Tech used
+        </p>
         <div className="border p-10"></div>
       </div>
     </div>

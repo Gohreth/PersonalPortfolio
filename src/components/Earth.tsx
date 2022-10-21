@@ -4,7 +4,8 @@ import EarthClouds from "../../public/textures/2k_earth_clouds.jpeg";
 import NormalEarth from "../../public/textures/2k_earth_normal_map.jpg";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSpring, animated } from "@react-spring/three";
 
 const TIME = {
   day: 0,
@@ -21,44 +22,71 @@ const getIndex = (time: number) => {
   }
 };
 
-const Earth = () => {
+const getEarthPosition = (section: string) => {
+  switch (section) {
+    case "HomePage":
+      return [-2.5, 0, 0];
+
+    case "ProjectsPage":
+      return [2.5, 0, 0];
+
+    case "ExperiencePage":
+      return [0, -1, 1];
+  }
+};
+
+const Earth = ({ section, start }: { section: string; start: boolean }) => {
   const [earthDay, earthNight, normalEarth, earthClouds] = useLoader(
     TextureLoader,
     [EarthDay, EarthNight, NormalEarth, EarthClouds]
   );
-  console.log(now);
+  console.log(start);
 
+  const positions = useSpring({
+    position: getEarthPosition(section),
+  });
+
+  const rotations = useSpring({
+    rotation: start ? [-0.5, -0.32, 0] : [0, 0, 0],
+  });
   const mapArray = [earthDay, earthNight];
 
   const meshRefEarth = useRef<any>(null);
   const meshRefClouds = useRef<any>(null);
 
   useFrame(({ clock }) => {
+    //If experience started then meshes won't rotate
     if (meshRefEarth && meshRefClouds) {
-      meshRefEarth.current.rotation.y = clock.getElapsedTime() * 0.085;
-
-      meshRefClouds.current.rotation.y = clock.getElapsedTime() * 0.1;
+      meshRefEarth.current.rotation.y =
+        !start && clock.getElapsedTime() * 0.085;
+      meshRefClouds.current.rotation.y =
+        clock.getElapsedTime() * (start ? 0.01 : 0.1);
     }
   });
   return (
     <>
-      <mesh ref={meshRefEarth} position={[-2.5, 0, 0]}>
-        <sphereGeometry args={[2, 32, 32]}></sphereGeometry>
-        <meshStandardMaterial
-          map={mapArray[getIndex(now)]}
-          normalMap={normalEarth}
-          metalness={getIndex(now) ? 0 : 0.75}
-        />
-      </mesh>
+      <animated.group
+        position={positions.position as any}
+        rotation={rotations.rotation as any}
+      >
+        <animated.mesh ref={meshRefEarth} rotation={rotations.rotation as any}>
+          <sphereGeometry args={[2, 32, 32]}></sphereGeometry>
+          <meshStandardMaterial
+            map={mapArray[getIndex(now)]}
+            normalMap={normalEarth}
+            metalness={getIndex(now) ? 0 : 0.75}
+          />
+        </animated.mesh>
 
-      <mesh ref={meshRefClouds} position={[-2.5, 0, 0]}>
-        <sphereGeometry args={[2.05, 32, 32]}></sphereGeometry>
-        <meshStandardMaterial
-          opacity={0.2}
-          transparent={true}
-          map={earthClouds}
-        />
-      </mesh>
+        <mesh ref={meshRefClouds}>
+          <sphereGeometry args={[2.05, 32, 32]}></sphereGeometry>
+          <meshStandardMaterial
+            opacity={0.2}
+            transparent={true}
+            map={earthClouds}
+          />
+        </mesh>
+      </animated.group>
     </>
   );
 };
