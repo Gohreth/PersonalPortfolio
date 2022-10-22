@@ -1,8 +1,8 @@
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
-import MoonMap from "../../public/textures/2k_moon.jpeg";
-import { useSpring, animated } from "@react-spring/three";
+import MoonMap from "../assets/textures/2k_moon.jpeg";
+import { useSpring, animated, config } from "@react-spring/three";
 
 const getMoonPosition = (section: string) => {
   switch (section) {
@@ -20,7 +20,10 @@ const getMoonPosition = (section: string) => {
 const Moon = ({ section }: { section: string }) => {
   const meshRefMoon = useRef<any>(null);
 
-  const positions = useSpring({ position: getMoonPosition(section) });
+  const positions = useSpring({
+    position: getMoonPosition(section),
+    config: config.molasses,
+  });
 
   const moonMap = useLoader(TextureLoader, MoonMap);
 

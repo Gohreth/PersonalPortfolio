@@ -1,3 +1,6 @@
+import githubLogo from "../assets/github.svg";
+import linkedInLogo from "../assets/linkedin.svg";
+
 const SECTIONS = [
   { id: "HomePage", htmlText: "Home" },
   { id: "ProjectsPage", htmlText: "Projects" },
@@ -29,13 +32,13 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
         {/*TODO change img for svg to fill color based on theme selected */}
         <li>
           <a href="https://github.com/Gohreth" target="__blank">
-            <img src="/github.svg" alt="" className="h-5 w-5" />
+            <img src={githubLogo} alt="" className="h-5 w-5" />
           </a>
         </li>
 
         <li>
           <a href="https://linkedin.com/in/sacf94" target="__blank">
-            <img src="/linkedin.svg" alt="" className="h-5 w-5" />
+            <img src={linkedInLogo} alt="" className="h-5 w-5" />
           </a>
         </li>
       </ul>

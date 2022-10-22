@@ -1,11 +1,11 @@
-import EarthDay from "../../public/textures/2k_earth_daymap.jpeg";
-import EarthNight from "../../public/textures/2k_earth_nightmap.jpeg";
-import EarthClouds from "../../public/textures/2k_earth_clouds.jpeg";
-import NormalEarth from "../../public/textures/2k_earth_normal_map.jpg";
+import EarthDay from "../assets/textures/2k_earth_daymap.jpeg";
+import EarthNight from "../assets/textures/2k_earth_nightmap.jpeg";
+import EarthClouds from "../assets/textures/2k_earth_clouds.jpeg";
+import NormalEarth from "../assets/textures/2k_earth_normal_map.jpg";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
-import { useSpring, animated } from "@react-spring/three";
+import { useSpring, animated, config } from "@react-spring/three";
 
 const TIME = {
   day: 0,
@@ -44,10 +44,12 @@ const Earth = ({ section, start }: { section: string; start: boolean }) => {
 
   const positions = useSpring({
     position: getEarthPosition(section),
+    config: config.molasses,
   });
 
   const rotations = useSpring({
     rotation: start ? [-0.5, -0.32, 0] : [0, 0, 0],
+    config: config.molasses,
   });
   const mapArray = [earthDay, earthNight];
 

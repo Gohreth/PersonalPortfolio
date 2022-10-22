@@ -24,6 +24,10 @@ function App() {
   const [start, setStart] = useState(false);
 
   useEffect(() => {
+    if (observed !== "ExperiencePage") setStart(false);
+  }, [observed]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -160,7 +164,6 @@ function App() {
               fade
               speed={0.5}
             />
-            <Stats />
           </Canvas>
         </div>
         <Home ref={homeRef} />

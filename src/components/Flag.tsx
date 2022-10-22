@@ -1,8 +1,8 @@
-import { animated, useSpring } from "@react-spring/three";
+import { animated, useSpring, config } from "@react-spring/three";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import ChileanFlag from "../../public/images/Chile.jpg";
+import ChileanFlag from "../assets/images/Chile.jpg";
 
 const SHADERS = {
   vertex: `
@@ -28,6 +28,7 @@ const Flag = ({ start }: { start: boolean }) => {
   const flagMesh = useRef<any>(null);
   const positions = useSpring({
     position: start ? [0.15, 0.25, 2.5] : [0.1, 5, 1],
+    config: config.slow,
   });
   const chileanFlag = useLoader(TextureLoader, ChileanFlag);
   const uniforms = useMemo(
