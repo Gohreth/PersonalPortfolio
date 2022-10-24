@@ -8,6 +8,36 @@ import {
 import Logos from "../components/Icons";
 import ProjectCard from "../components/ProjectCard";
 
+const PROJECTS = [
+  {
+    name: "Personal Portfolio",
+    identifier: "#001",
+    description: "Project 1 Description",
+    tech: ["HTML", "CSS", "JavaScript", "React", "Tailwind", "Three"],
+  },
+  {
+    name: "bGames Dashboard",
+    identifier: "#002",
+    description: "Project 2 Description",
+    tech: ["HTML", "CSS", "Vue", "Mongo", "Firebase", "GitHub"],
+  },
+  {
+    name: "Dashboard Remake",
+    identifier: "#003",
+    description: "Project 3 Description",
+    tech: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next",
+      "Tailwind",
+      "tRPC",
+      "GitHub",
+    ],
+  },
+];
+
 const Projects = forwardRef<HTMLDivElement>((props, ref) => {
   const [observed, setObserved] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,13 +46,9 @@ const Projects = forwardRef<HTMLDivElement>((props, ref) => {
   const secondRef = useRef<HTMLDivElement>(null);
   const thirdRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    console.log(containerRef);
-
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          console.log(entry);
-
           entry.isIntersecting && setObserved(entry.target.id);
         }
       },
@@ -51,35 +77,26 @@ const Projects = forwardRef<HTMLDivElement>((props, ref) => {
         >
           <ProjectCard
             ref={firstRef}
-            cardProps={{
-              name: "Personal Portfolio",
-              identifier: "#001",
-              description: "Project 1 Description",
-            }}
+            cardProps={PROJECTS[0]}
             observed={observed!}
           />
           <ProjectCard
             ref={secondRef}
-            cardProps={{
-              name: "bGames Dashboard",
-              identifier: "#002",
-              description: "Project 2 Description",
-            }}
+            cardProps={PROJECTS[1]}
             observed={observed!}
           />
           <ProjectCard
             ref={thirdRef}
-            cardProps={{
-              name: "Dashboard Remake",
-              identifier: "#003",
-              description: "Project 3 Description",
-            }}
+            cardProps={PROJECTS[2]}
             observed={observed!}
           />
         </div>
       </div>
 
-      <Logos color="white"></Logos>
+      <Logos
+        tech={PROJECTS.find((project) => project.identifier === observed)?.tech}
+        color="white"
+      ></Logos>
     </div>
   );
 });

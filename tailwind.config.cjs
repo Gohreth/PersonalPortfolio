@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        chile: "url(../public/images/Chile.jpg)",
+        chile: "url(./assets/images/Chile.jpg)",
       },
       textColor: {
         textLightMode: "#13141f",

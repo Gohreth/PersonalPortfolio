@@ -1,4 +1,6 @@
 import { forwardRef, useEffect, useState } from "react";
+import AnimojiOne from "../assets/images/about.png";
+import AnimojiTwo from "../assets/images/projects.png";
 
 const ROLES = ["Web Developer", "Computer Engineer"];
 
@@ -30,12 +32,12 @@ const Home = forwardRef<HTMLDivElement>((props, ref) => {
             <div className="relative h-20 w-20">
               <img
                 className="absolute animate-[vanish_5s_ease-in-out_infinite_alternate-reverse]"
-                src="../public/images/projects.png"
+                src={AnimojiTwo}
                 alt=""
               />
               <img
                 className="absolute animate-[vanish_5s_ease-in-out_infinite_alternate]"
-                src="../public/images/about.png"
+                src={AnimojiOne}
                 alt=""
               />
             </div>
