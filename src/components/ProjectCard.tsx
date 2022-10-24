@@ -19,7 +19,7 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
   });
   const descriptionStyles = useSpring({
     opacity: isVisible ? 1 : 0,
-    config: config.default,
+    backgroundColor: isVisible ? "black" : "transparent",
   });
   useEffect(() => {
     if (props.observed === props.cardProps.identifier) setIsCenter(true);
@@ -37,7 +37,10 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
       className="w-[400px] h-[200px] bg-yellow-300 flex-shrink-0 snap-center relative overflow-hidden"
     >
       <img src="https://picsum.photos/400/200" alt="" className="absolute" />
-      <animated.p style={idStyles} className="absolute top-1 left-1 font-bold">
+      <animated.p
+        style={idStyles}
+        className="absolute top-1 left-1 font-bold z-10"
+      >
         {props.cardProps.identifier}
       </animated.p>
       <animated.div
@@ -50,20 +53,23 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
       >
         {props.cardProps.name}
       </animated.p>
+      <animated.div
+        style={idStyles}
+        className="absolute -top-8 h-16 bg-black opacity-50 w-full z-0"
+      ></animated.div>
       <button
         onClick={() => setIsVisible(!isVisible)}
-        className="absolute top-1 animate-pulse text-xs font-bold text-center w-full z-10"
+        className="absolute top-2 animate-pulse text-xs font-bold text-center w-full z-10"
       >
         {`${isVisible ? "Hide" : "Show"}`}
       </button>
-      {isVisible && (
-        <animated.p
-          style={descriptionStyles}
-          className="absolute inset-0 grid place-items-center font-thin backdrop-blur-xl text-sm"
-        >
-          {props.cardProps.description}
-        </animated.p>
-      )}
+
+      <animated.p
+        style={descriptionStyles}
+        className="absolute inset-0 grid place-items-center font-thin text-sm"
+      >
+        {props.cardProps.description}
+      </animated.p>
     </div>
   );
 });

@@ -1,20 +1,21 @@
 import { forwardRef, useEffect, useState } from "react";
 import AnimojiOne from "../assets/images/about.png";
 import AnimojiTwo from "../assets/images/projects.png";
+import Timeline from "../components/Timeline";
 
 const ROLES = ["Web Developer", "Computer Engineer"];
 
 const Home = forwardRef<HTMLDivElement>((props, ref) => {
   const [index, setIndex] = useState<number>(0);
 
-  useEffect(() => {
+  /* useEffect(() => {
     //Changes index every 5 seconds (duration of animation)
     const interval = setInterval(
       () => setIndex((prevState) => (prevState + 1) % 2),
       5000
     );
     return () => clearInterval(interval);
-  }, []);
+  }, []); */
 
   return (
     <div
@@ -51,7 +52,7 @@ const Home = forwardRef<HTMLDivElement>((props, ref) => {
           </div>
         </div>
         <br />
-        <div className="w-2/3 h-auto border-t-4 border-dashed"></div>
+        <Timeline></Timeline>
         <br />
         <p>
           From Santiago,&nbsp;

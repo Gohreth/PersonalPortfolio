@@ -16,11 +16,13 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
           return (
             <a href={`#${section.id}`} key={section.id}>
               <li
-                className={
+                className={`relative transition-width duration-300
+                before:content-[''] before:absolute before:bottom-0 before:rounded-full  before:h-0.5 before:transition-width before:duration-300
+                ${
                   currentSection === section.id
-                    ? "animate-pulse text-accent"
-                    : ""
-                }
+                    ? "before:w-full before:bg-accent text-accent animate-pulse"
+                    : "before:w-0 text-textDarkMode"
+                }`}
               >
                 {section.htmlText}
               </li>
