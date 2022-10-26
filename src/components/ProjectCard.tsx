@@ -2,7 +2,12 @@ import { forwardRef, useEffect, useState } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 
 type PropsType = {
-  cardProps: { name: string; identifier: string; description: string };
+  cardProps: {
+    name: string;
+    identifier: string;
+    description: string;
+    image: string;
+  };
   observed: string;
 };
 
@@ -34,22 +39,26 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
     <div
       ref={ref}
       id={props.cardProps.identifier}
-      className="w-[400px] h-[200px] bg-yellow-300 flex-shrink-0 snap-center relative overflow-hidden"
+      className="aspect-[2/1] w-[300px] md:w-[400px] bg-yellow-300 flex-shrink-0 snap-center relative overflow-hidden"
     >
-      <img src="https://picsum.photos/400/200" alt="" className="absolute" />
+      <img
+        src={props.cardProps.image}
+        alt={props.cardProps.name}
+        className="absolute object-cover"
+      />
       <animated.p
         style={idStyles}
-        className="absolute top-1 left-1 font-bold z-10"
+        className="absolute top-2 left-2 md:top-1 md:left-2 font-bold text-xs md:text-base z-10"
       >
         {props.cardProps.identifier}
       </animated.p>
       <animated.div
         style={titleStyles}
-        className="bg-black w-[20rem] h-[20rem] clip-ellipse absolute right-[-10rem] bottom-[-14rem]"
+        className="bg-black w-[20rem] h-[20rem] clip-ellipse absolute right-[-12rem] bottom-[-15rem] md:right-[-10rem] md:bottom-[-14rem]"
       />
       <animated.p
         style={titleStyles}
-        className="absolute bottom-[1rem] right-[1rem] text-right break-words w-min leading-4 font-semibold"
+        className="absolute text-xs md:text-sm bottom-2 right-2  md:bottom-4 md:right-4 text-right break-words w-min leading-4 font-semibold"
       >
         {props.cardProps.name}
       </animated.p>
@@ -66,7 +75,7 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
 
       <animated.p
         style={descriptionStyles}
-        className="absolute inset-0 grid place-items-center font-thin text-sm"
+        className="absolute inset-0 grid place-items-center font-thin text-xs md:text-sm"
       >
         {props.cardProps.description}
       </animated.p>

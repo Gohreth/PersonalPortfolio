@@ -72,7 +72,7 @@ const Timeline = () => {
     <div
       id="timeline"
       ref={timelineRef}
-      className="w-[80%] h-0.5 bg-white rounded-full relative"
+      className="w-full lg:w-[80%] h-0.5 bg-white rounded-full relative"
     >
       {ICONS.map((icon) => (
         <Icon
