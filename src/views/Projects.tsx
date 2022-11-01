@@ -8,21 +8,24 @@ const PROJECTS = [
   {
     name: "Personal Portfolio",
     identifier: "#001",
-    description: "Project 1 Description",
+    description:
+      "Personal project whose main purpose is to introduce myself. It also works as a showcase of the skills I've learnt during my formation as a web developer while working in personal projects. I decided to not add projects made in University (mainly programs developed using C) nor group projects",
     image: portfolioImage,
     tech: ["HTML", "CSS", "JavaScript", "React", "Tailwind", "Three"],
   },
   {
     name: "bGames Dashboard",
     identifier: "#002",
-    description: "Project 2 Description",
+    description:
+      "Undergraduate thesis project made with the guidance of a faculty teacher and using agile development. The project itself consist in an unified platform where developers and users of a framework for game development (bGames) can upload, download, rate, comment and review the content.",
     image: bGamesImage,
     tech: ["HTML", "CSS", "Vue", "Mongo", "Firebase", "GitHub", "Docker"],
   },
   {
     name: "Dashboard Remake",
     identifier: "#003",
-    description: "Project 3 Description",
+    description:
+      "Personal project whose goal is to recreate my undergraduate thesis project with a better UI, more features and developed using a different stack of technologies.",
     image: bGamesImage,
     tech: [
       "HTML",
