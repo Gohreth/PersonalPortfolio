@@ -13,10 +13,10 @@ const Experience = forwardRef<HTMLDivElement, any>((props, ref) => {
     >
       <button
         onClick={() => {
-          props.onStartPress();
           setIndex((index + 1) % 2);
+          props.onStartPress();
         }}
-        className="border-4 rounded-xl p-5 hover:animate-pulse hover:text-textAccent hover:border-accent transition-colors"
+        className="border-4 rounded-xl p-5 w-48 hover:animate-pulse hover:text-textAccent hover:border-accent transition-colors"
       >
         {MESSAGES[index]}
       </button>

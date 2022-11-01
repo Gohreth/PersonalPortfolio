@@ -53,6 +53,9 @@ function App() {
       >
         <div className={`-z-10 bg-black h-screen absolute w-screen`}>
           <Canvas>
+            <Earth section={observed!} start={start}></Earth>
+            <Moon section={observed!}></Moon>
+
             <PerspectiveCamera
               makeDefault
               position={[0, 0, 5]}
@@ -151,9 +154,9 @@ function App() {
             >
               <ambientLight></ambientLight>
             </PerspectiveCamera>
+
             <Flag start={start}></Flag>
-            <Earth section={observed!} start={start}></Earth>
-            <Moon section={observed!}></Moon>
+
             <Stars
               radius={100}
               depth={5}
@@ -165,6 +168,7 @@ function App() {
             />
           </Canvas>
         </div>
+
         <Home ref={homeRef} />
         <Projects ref={projectsRef} />
         <Experience onStartPress={() => setStart(!start)} ref={experienceRef} />

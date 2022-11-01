@@ -3,6 +3,7 @@ import Logos from "../components/Icons";
 import ProjectCard from "../components/ProjectCard";
 import bGamesImage from "../assets/images/bGames.png";
 import portfolioImage from "../assets/images/portfolio.png";
+import bGamesRemakeImage from "../assets/images/bgames-remake.png";
 
 const PROJECTS = [
   {
@@ -26,7 +27,7 @@ const PROJECTS = [
     identifier: "#003",
     description:
       "Personal project whose goal is to recreate my undergraduate thesis project with a better UI, more features and developed using a different stack of technologies.",
-    image: bGamesImage,
+    image: bGamesRemakeImage,
     tech: [
       "HTML",
       "CSS",

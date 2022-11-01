@@ -45,6 +45,7 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
         src={props.cardProps.image}
         alt={props.cardProps.name}
         className="absolute object-cover"
+        loading="lazy"
       />
       <animated.p
         style={idStyles}
@@ -75,7 +76,7 @@ const ProjectCard = forwardRef<HTMLDivElement, PropsType>((props, ref) => {
 
       <animated.p
         style={descriptionStyles}
-        className="absolute inset-0 grid place-items-center font-thin text-xs md:text-sm"
+        className="absolute inset-0 grid place-items-center font-thin text-[0.5rem] md:text-xs lg:text-sm p-4"
       >
         {props.cardProps.description}
       </animated.p>

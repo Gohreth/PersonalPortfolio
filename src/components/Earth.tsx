@@ -4,7 +4,7 @@ import EarthClouds from "../assets/textures/2k_earth_clouds.jpeg";
 import NormalEarth from "../assets/textures/2k_earth_normal_map.jpg";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useSpring, animated, config } from "@react-spring/three";
 
 const TIME = {
@@ -66,30 +66,28 @@ const Earth = ({ section, start }: { section: string; start: boolean }) => {
     }
   });
   return (
-    <>
-      <animated.group
-        position={positions.position as any}
-        rotation={rotations.rotation as any}
-      >
-        <animated.mesh ref={meshRefEarth} rotation={rotations.rotation as any}>
-          <sphereGeometry args={[2, 32, 32]}></sphereGeometry>
-          <meshStandardMaterial
-            map={mapArray[getIndex(now)]}
-            normalMap={normalEarth}
-            metalness={getIndex(now) ? 0 : 0.75}
-          />
-        </animated.mesh>
+    <animated.group
+      position={positions.position as any}
+      rotation={rotations.rotation as any}
+    >
+      <animated.mesh ref={meshRefEarth} rotation={rotations.rotation as any}>
+        <sphereGeometry args={[2, 32, 32]}></sphereGeometry>
+        <meshStandardMaterial
+          map={mapArray[getIndex(now)]}
+          normalMap={normalEarth}
+          metalness={getIndex(now) ? 0 : 0.75}
+        />
+      </animated.mesh>
 
-        <mesh ref={meshRefClouds}>
-          <sphereGeometry args={[2.05, 32, 32]}></sphereGeometry>
-          <meshStandardMaterial
-            opacity={0.2}
-            transparent={true}
-            map={earthClouds}
-          />
-        </mesh>
-      </animated.group>
-    </>
+      <mesh ref={meshRefClouds}>
+        <sphereGeometry args={[2.05, 32, 32]}></sphereGeometry>
+        <meshStandardMaterial
+          opacity={0.2}
+          transparent={true}
+          map={earthClouds}
+        />
+      </mesh>
+    </animated.group>
   );
 };
 
